@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Story/Beat")]
+[CreateAssetMenu(fileName = "BeatId", menuName = "Story/Beat")]
 public class BeatId : ScriptableObject { }
 
 public readonly struct ProgressBeat {
