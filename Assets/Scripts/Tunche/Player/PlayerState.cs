@@ -1,4 +1,3 @@
-
 public abstract class PlayerState
 {
     protected readonly PlayerStateController player;
@@ -13,3 +12,4 @@ public abstract class PlayerState
     public virtual void Tick() { }
 
     public virtual void Exit() { }
+}
