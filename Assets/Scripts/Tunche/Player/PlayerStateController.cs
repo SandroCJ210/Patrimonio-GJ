@@ -60,7 +60,13 @@ public class PlayerStateController : MonoBehaviour
 
         // Crear maquina de estados
         Machine = new PlayerStateMachine();
-
+        /*  
+         Prueba de estados funcionales 
+        Machine.StateChanged += state =>
+        {
+            Debug.Log($"Estado actual: {state.GetType().Name}");
+        };
+        */
         // Establecer el estado inicial
         Machine.ChangeTo(Idle);
     }
