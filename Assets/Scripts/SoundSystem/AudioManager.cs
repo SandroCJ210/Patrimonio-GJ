@@ -16,6 +16,8 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 
 	AudioSource m_backgroundAudioSource;
 	Sound m_currentBackground;
+	private bool m_resumeBackgroundAfterStop;
+	private float m_backgroundResumeTime;
 
 	Dictionary<string, Sound> m_musicDict;
 	Dictionary<string, Sound> m_soundDict;
@@ -48,6 +50,8 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 	}
 
 	private void SetupClips() {
+		if (m_MusicList == null) m_MusicList = System.Array.Empty<Sound>();
+		if (m_SoundList == null) m_SoundList = System.Array.Empty<Sound>();
 		m_musicDict = m_MusicList.ToDictionary(s => s.name, s => s);
 		m_soundDict = m_SoundList.ToDictionary(s => s.name, s => s);
 	}
@@ -68,6 +72,55 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 		emmiter.SetupSound(sound, m_soundVolume * m_generalVolumen);
 		emmiter.PlaySound();
 		return emmiter;
+	}
+
+	/// <summary>Schedules any clip from the shared pool at an absolute DSP time.</summary>
+	public EmmiterController PlayScheduled(AudioClip clip, double dspStartTime,
+		AudioBus bus = AudioBus.Music, float clipVolume = 1f, float pitch = 1f,
+		bool loop = false, bool retainEmitterUntilStopped = false) {
+		if (clip == null) {
+			Debug.LogError("Cannot schedule a null audio clip.");
+			return null;
+		}
+		if (clip.loadState != AudioDataLoadState.Loaded) {
+			Debug.LogError($"Audio clip '{clip.name}' must be loaded before it can be scheduled.");
+			return null;
+		}
+		if (double.IsNaN(dspStartTime) || double.IsInfinity(dspStartTime) || dspStartTime < AudioSettings.dspTime) {
+			Debug.LogError("Scheduled DSP time must be finite and in the future.");
+			return null;
+		}
+		if (float.IsNaN(clipVolume) || float.IsInfinity(clipVolume) ||
+			float.IsNaN(pitch) || float.IsInfinity(pitch) ||
+			clipVolume < 0f || clipVolume > 1f || pitch <= 0f) {
+			Debug.LogError("Clip volume must be 0-1 and pitch must be positive.");
+			return null;
+		}
+		if (SoundPool.Instance == null) {
+			Debug.LogWarning("SoundPool is not available. The scheduled clip could not be played.");
+			return null;
+		}
+
+		var emitter = SoundPool.Instance.PoolSoundEmmiter();
+		if (emitter == null) return null;
+		emitter.SetupClip(clip, clipVolume, GetBusVolume(bus), bus, pitch, loop,
+			retainEmitterUntilStopped);
+		try {
+			emitter.PlayScheduled(dspStartTime);
+			return emitter;
+		}
+		catch {
+			emitter.StopSound();
+			throw;
+		}
+	}
+
+	public EmmiterController PlayScheduled(Sound sound, double dspStartTime, AudioBus bus = AudioBus.Music) {
+		if (sound == null) {
+			Debug.LogError("Cannot schedule a null Sound.");
+			return null;
+		}
+		return PlayScheduled(sound.clip, dspStartTime, bus, sound.volume, sound.pitch, sound.loop);
 	}
 
 	public void Stop(EmmiterController emmiter) {
@@ -112,6 +165,7 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 			return;
 		}
 		var music = m_musicDict[name];
+		m_resumeBackgroundAfterStop = false;
 		m_currentBackground = music;
 		m_backgroundAudioSource.clip 	= music.clip;
 		m_backgroundAudioSource.volume 	= music.volume * m_musicVolume * m_generalVolumen;
@@ -133,12 +187,19 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 		UpdateBGMusic(name, time);
 	}
 
-	public void StopBGM() {
+	public void StopBGM()
+	{
+		if (m_backgroundAudioSource.clip == null) return;
+		m_resumeBackgroundAfterStop = m_backgroundAudioSource.isPlaying;
+		m_backgroundResumeTime = m_backgroundAudioSource.time;
 		m_backgroundAudioSource.Stop();
 	}
 	
 	public void ResumeBGM() {
+		if (!m_resumeBackgroundAfterStop || m_currentBackground == null) return;
+		m_backgroundAudioSource.time = m_backgroundResumeTime;
 		m_backgroundAudioSource.Play();
+		m_resumeBackgroundAfterStop = false;
 	}
 	#endregion
 
@@ -153,11 +214,8 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 
 		if(m_currentBackground != null)
 			m_backgroundAudioSource.volume = m_currentBackground.volume * m_musicVolume * m_generalVolumen;	
-		if(SoundPool.Instance != null) {
-			SoundPool.Instance.m_ActiveObjects.ForEach( r => {
-				r.GetComponent<EmmiterController>().UpdateVolume(m_soundVolume * m_generalVolumen);
-			});
-		}
+		UpdateActiveEmitterVolumes(AudioBus.Sfx, m_soundVolume * m_generalVolumen);
+		UpdateActiveEmitterVolumes(AudioBus.Music, m_musicVolume * m_generalVolumen);
 	}
 
 	public void UpdateMusicVolume(float volume) {
@@ -168,6 +226,7 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 		m_musicVolume = volume;
 		if(m_currentBackground != null)
 			m_backgroundAudioSource.volume = m_currentBackground.volume * m_musicVolume * m_generalVolumen;
+		UpdateActiveEmitterVolumes(AudioBus.Music, m_musicVolume * m_generalVolumen);
 	}
 
 	public void UpdateSoundVolume(float volume) {
@@ -178,10 +237,20 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 
 		m_soundVolume = volume;
 
-		if(SoundPool.Instance != null) {
-			SoundPool.Instance.m_ActiveObjects.ForEach( r => {
-				r.GetComponent<EmmiterController>().UpdateVolume(m_soundVolume * m_generalVolumen);
-			});
+		UpdateActiveEmitterVolumes(AudioBus.Sfx, m_soundVolume * m_generalVolumen);
+	}
+
+	private float GetBusVolume(AudioBus bus) => bus == AudioBus.Music
+		? m_musicVolume * m_generalVolumen
+		: m_soundVolume * m_generalVolumen;
+
+	private void UpdateActiveEmitterVolumes(AudioBus bus, float volume) {
+		if(SoundPool.Instance == null) return;
+		foreach(GameObject activeObject in SoundPool.Instance.m_ActiveObjects) {
+			if(activeObject == null) continue;
+			EmmiterController emitter = activeObject.GetComponent<EmmiterController>();
+			if(emitter != null && emitter.IsMusic == (bus == AudioBus.Music))
+				emitter.UpdateVolume(volume);
 		}
 	}
 

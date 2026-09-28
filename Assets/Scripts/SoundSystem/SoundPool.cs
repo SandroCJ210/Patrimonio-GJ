@@ -4,6 +4,13 @@ class SoundPool : PoolSystem<SoundPool> {
 	
     [SerializeField] GameObject m_soundEmmiterPrefab;
 
+    protected override void Awake() {
+        // Make the prefab available even if another component requests an emitter
+        // before this pool's Start method runs.
+        m_objectPrefab = m_soundEmmiterPrefab;
+        base.Awake();
+    }
+
     protected override void Start() {
         m_objectPrefab = m_soundEmmiterPrefab;
         base.Start();

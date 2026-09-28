@@ -1,6 +1,11 @@
 using UnityEngine.Audio;
 using UnityEngine;
 
+public enum AudioBus {
+	Sfx,
+	Music
+}
+
 [System.Serializable]
 public class Sound {
     public string name;
