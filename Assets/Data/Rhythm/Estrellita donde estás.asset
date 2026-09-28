@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222e529c73b969540b08418b9a6faaa6, type: 3}
+  m_Name: "Estrellita donde est\xE1s"
+  m_EditorClassIdentifier: Assembly-CSharp::SongData
+  backgroundClip: {fileID: 8300000, guid: ef45c59f40e59f647946a0811e69f7e7, type: 3}
+  mainClip: {fileID: 8300000, guid: fcde60bc33e10934597fe64c6cf63c18, type: 3}
+  backgroundVolume: 1
+  mainVolume: 1
+  minimumMainPerformanceVolume: 0.5
+  bpm: 85
+  songOffset: 5.699
+  beatsPerMeasure: 4
+  ticksPerBeat: 4
+  timeToPlayBeat: 2
+  notes:
+  - tick: 1
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 5
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 9
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 13
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 17
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 21
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  difficulty: 0
