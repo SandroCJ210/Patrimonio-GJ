@@ -1,7 +1,7 @@
 using System;
 
 public interface IMinigame {
-    public void BeginMinigame();
+    public void BeginGame();
     event Action<MinigameResult> Finished;
     event Action<ProgressBeat> Progressed;
 }

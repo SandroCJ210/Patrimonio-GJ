@@ -1103,7 +1103,6 @@ GameObject:
   - component: {fileID: 923164668}
   - component: {fileID: 2100000999}
   - component: {fileID: 923164667}
-  - component: {fileID: 923164666}
   - component: {fileID: 923164670}
   - component: {fileID: 923164669}
   - component: {fileID: 923164671}
@@ -1114,14 +1113,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &923164666
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923164665}
-  m_Enabled: 1
 --- !u!20 &923164667
 Camera:
   m_ObjectHideFlags: 0
@@ -1878,13 +1869,14 @@ MonoBehaviour:
   whistleThreat: {fileID: 1753388001}
   apparition: {fileID: 1753388000}
   lossScreen: {fileID: 1566031164}
-  dialogue: {fileID: 0}
+  coreManager: {fileID: 0}
   sequence: 000000000100000002000000000000000200000000000000
   minPause: 3
   maxPause: 10
   startBeat: {fileID: 0}
   turnBeats: []
   wonBeat: {fileID: 0}
+  initialSequence: {fileID: 11400000, guid: 0212f8276d95ae14bac53b83cc708335, type: 2}
 --- !u!4 &1753388003
 Transform:
   m_ObjectHideFlags: 0

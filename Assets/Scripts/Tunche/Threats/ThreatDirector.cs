@@ -7,7 +7,7 @@ public class ThreatDirector : MonoBehaviour, IMinigame
     [SerializeField] WhistleThreat whistleThreat;
     [SerializeField] BoatApparition apparition;
     [SerializeField] LossScreenController lossScreen;
-    [SerializeField] ThreatDialogueBridge dialogue;
+    [SerializeField] CoreManager coreManager;
 
     [SerializeField]
     ThreatType[] sequence =
@@ -28,6 +28,7 @@ public class ThreatDirector : MonoBehaviour, IMinigame
     [SerializeField] BeatId[] turnBeats;
     [SerializeField] BeatId wonBeat;
 
+    [SerializeField] DialogueSequence initialSequence;
   
     public event System.Action<MinigameResult> Finished;
     public event System.Action<ProgressBeat> Progressed;
@@ -56,12 +57,40 @@ public class ThreatDirector : MonoBehaviour, IMinigame
 
         if (sequenceRoutine != null) StopCoroutine(sequenceRoutine);
         sequenceRoutine = null;
-        if (dialogue != null) dialogue.StopDialogue();
         if (whistleThreat != null) whistleThreat.ForceReset();
         if (apparition != null) apparition.ForceReset();
     }
+    int index = -1;
 
-    void Start() => BeginGame();
+    void PlayDialog(DialogueSequence seq)
+    {
+        index = 0;
+        CoreManager.I.Lines.Play(seq.lines[index], NextDialog);
+    }
+
+    void NextDialog()
+    {
+        index++;
+        if (index >= initialSequence.lines.Length)
+        {
+            FinishDialog();
+            return;
+        }
+        CoreManager.I.Lines.Play(initialSequence.lines[index], NextDialog);
+    }
+
+    void Start()
+    {
+        CoreManager.I.DialogScreen.SetActive(true);
+        PlayDialog(initialSequence);
+    }
+
+    void FinishDialog()
+    {
+        CoreManager.I.Lines.Stop();
+        CoreManager.I.DialogScreen.SetActive(false);
+        BeginGame();
+    }
 
     void HandleResolved(bool survived)
     {
@@ -74,7 +103,9 @@ public class ThreatDirector : MonoBehaviour, IMinigame
         if (player == null || whistleThreat == null || apparition == null) return;
 
         if (sequenceRoutine != null) StopCoroutine(sequenceRoutine);
-        if (dialogue != null) dialogue.StopDialogue();
+
+        CoreManager.I.Lines.Stop();
+
         whistleThreat.ForceReset();
         apparition.ForceReset();
         waitingForResolution = false;
@@ -92,8 +123,6 @@ public class ThreatDirector : MonoBehaviour, IMinigame
     IEnumerator RunSequence()
     {
         player.Freeze();
-        if (dialogue != null)
-            yield return dialogue.PlayIntroduction();
         player.ResetForNewGame();
         RaiseProgress(startBeat);
 
@@ -117,7 +146,7 @@ public class ThreatDirector : MonoBehaviour, IMinigame
 
             if (!lastSurvived)
             {
-                if (dialogue != null) dialogue.StopDialogue();
+                CoreManager.I.Lines.Stop();
                 player.Freeze();
                 if (lossScreen != null) lossScreen.Show();
                 sequenceRoutine = null;
