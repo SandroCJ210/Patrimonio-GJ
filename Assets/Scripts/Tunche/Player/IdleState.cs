@@ -1,22 +1,24 @@
-
 public class IdleState : PlayerState
 {
-    public IdleState(PlayerStateController player) : base(player)
+    public IdleState(PlayerStateController controller, PlayerStateMachine machine) : base(controller, machine) { }
+
+    public override void Enter()
     {
+        if (Controller.InputEnabled) Controller.SetControlLocks(cameraLocked: false, inputEnabled: true);
     }
 
-    public override void Tick()
+    public override void Tick(float deltaTime)
     {
-        if (!player.InputEnabled)
+        if (!Controller.InputEnabled) return;
+        if (PlayerInput.DuckPressed && Controller.CanDuck)
+        {
+            Machine.ChangeState(Controller.Duck);
             return;
-
-        if (PlayerInput.DuckPressed && player.CanDuck)
-        {
-            player.Machine.ChangeTo(player.Duck);
         }
-        else if (PlayerInput.CrossPressed && player.CrossReady)
+
+        if (PlayerInput.CrossPressed && Controller.CanCross)
         {
-            player.Machine.ChangeTo(player.Cross);
+            Machine.ChangeState(Controller.Cross);
         }
     }
 }

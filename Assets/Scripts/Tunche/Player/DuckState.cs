@@ -1,43 +1,45 @@
+using System.Collections;
 using UnityEngine;
 
 public class DuckState : PlayerState
 {
-    private readonly float duration;
-    private readonly Cooldown cooldown;
+    Coroutine routine;
 
-    private float endTime;
-
-    public DuckState(
-        PlayerStateController player,
-        float duration,
-        Cooldown cooldown
-    ) : base(player)
-    {
-        this.duration = duration;
-        this.cooldown = cooldown;
-    }
+    public DuckState(PlayerStateController controller, PlayerStateMachine machine) : base(controller, machine) { }
 
     public override void Enter()
     {
-        endTime = Time.time + duration;
-
-        player.Hands.ShowDuck();
-
-        player.NotifyDuckStarted();
-    }
-
-    public override void Tick()
-    {
-        if (Time.time >= endTime)
-        {
-            player.Machine.ChangeTo(player.Idle);
-        }
+        Controller.BeginDuckSequence();
+        routine = Controller.StartCoroutine(Run());
     }
 
     public override void Exit()
     {
-        player.Hands.HideAll();
+        if (routine != null) Controller.StopCoroutine(routine);
+        routine = null;
+    }
 
-        cooldown.Start();
+    IEnumerator Run()
+    {
+        var presentation = Controller.DuckPresentation;
+        float entry = Controller.DuckEntryDuration;
+        float action = Controller.DuckActionDuration;
+        float exit = Controller.DuckExitDuration;
+
+        if (presentation != null) presentation.FadeIn(entry);
+        yield return new WaitForSeconds(entry);
+        if (presentation != null) presentation.RecenterCamera();
+
+        float exitStart = Mathf.Max(entry, action - exit);
+        if (exitStart > entry)
+            yield return new WaitForSeconds(exitStart - entry);
+
+        if (presentation != null) presentation.FadeOut(exit);
+        float remaining = action - exitStart;
+        if (remaining > 0f)
+            yield return new WaitForSeconds(remaining);
+
+        Controller.EndDuckSequence();
+        Machine.ChangeState(Controller.Idle);
     }
 }

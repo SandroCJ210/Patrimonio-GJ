@@ -1,43 +1,46 @@
+using System.Collections;
 using UnityEngine;
 
 public class CrossState : PlayerState
 {
-    private readonly float duration;
-    private readonly Cooldown cooldown;
+    Coroutine routine;
 
-    private float endTime;
-
-    public CrossState(
-        PlayerStateController player,
-        float duration,
-        Cooldown cooldown
-    ) : base(player)
-    {
-        this.duration = duration;
-        this.cooldown = cooldown;
-    }
+    public CrossState(PlayerStateController controller, PlayerStateMachine machine) : base(controller, machine) { }
 
     public override void Enter()
     {
-        endTime = Time.time + duration;
-
-        player.Hands.ShowCross();
-
-        player.NotifyCrossUsed();
-    }
-
-    public override void Tick()
-    {
-        if (Time.time >= endTime)
-        {
-            player.Machine.ChangeTo(player.Idle);
-        }
+        Controller.SetControlLocks(cameraLocked: true, inputEnabled: false);
+        routine = Controller.StartCoroutine(Run());
     }
 
     public override void Exit()
     {
-        player.Hands.HideAll();
+        if (routine != null) Controller.StopCoroutine(routine);
+        routine = null;
+    }
 
-        cooldown.Start();
+    IEnumerator Run()
+    {
+        var hands = Controller.Hands;
+        hands.ShowCross();
+
+        yield return new WaitForSeconds(Controller.CrossRaiseDuration);
+        Controller.NotifyCrossUsed();
+
+        yield return new WaitForSeconds(Controller.CrossHoldDuration);
+
+        hands.HideCross();
+
+        yield return new WaitForSeconds(Controller.CrossLowerDuration);
+        Controller.CrossCooldownStart();
+
+       
+        Controller.SetControlLocks(
+            cameraLocked: false,
+            inputEnabled: true
+        );
+
+        Machine.ChangeState(Controller.Idle);
+       
     }
 }

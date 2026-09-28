@@ -14,6 +14,17 @@ public class CameraMovement : MonoBehaviour
     private Camera cam;
     private float currentVelocity;
 
+    public void RecenterToFront()
+    {
+        currentVelocity = 0f;
+        if (background == null) return;
+
+        Vector3 position = transform.position;
+        position.x = background.bounds.center.x;
+        transform.position = position;
+        ClampToBackground();
+    }
+
     void Awake()
     {
         cam = GetComponent<Camera>();

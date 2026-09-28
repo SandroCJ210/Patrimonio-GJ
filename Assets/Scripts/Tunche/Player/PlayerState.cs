@@ -1,15 +1,15 @@
 public abstract class PlayerState
 {
-    protected readonly PlayerStateController player;
+    protected readonly PlayerStateController Controller;
+    protected readonly PlayerStateMachine Machine;
 
-    protected PlayerState(PlayerStateController player)
+    protected PlayerState(PlayerStateController controller, PlayerStateMachine machine)
     {
-        this.player = player;
+        Controller = controller;
+        Machine = machine;
     }
 
     public virtual void Enter() { }
-
-    public virtual void Tick() { }
-
+    public virtual void Tick(float deltaTime) { }
     public virtual void Exit() { }
 }
