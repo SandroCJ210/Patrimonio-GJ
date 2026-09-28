@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cecf942c06f1494a991de1297c094fc, type: 3}
+  m_Name: Tunche_Dialog
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Hace muchos a\xF1os, cuando viajaba por el Per\xFA, tuve la oportunidad
+      de conocer la selva, nieto m\xEDo."
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Una noche, estando all\xED, tuve que cruzar un r\xEDo completamente solo."
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "En medio del camino comenc\xE9 a escuchar silbidos que ven\xEDan desde
+      los alrededores."
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Entonces record\xE9 lo que un hombre de la zona me hab\xEDa advertido:\n"
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "\u201CSi escuchas su silbido y logras verlo, baja la cabeza, c\xFAbrete
+      y espera hasta que ya no puedas o\xEDrlo.(Tecla S)\u201D"
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Pens\xE9 que eso ser\xEDa lo peor...\npero tambi\xE9n me dijo:"
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "\u201CSi llegas a ver algo dentro de la balsa, no le mires el rostro.
+      Mira sus pies. Ah\xED sabr\xE1s si realmente es humano.\u201D"
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Y antes de marcharme, me dej\xF3 una \xFAltima advertencia:"
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "\u201CSi lo ves... levanta tu cruz (Tecla E). Eso puede salvarte.\u201D"
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Aquella noche aprend\xED que, en los r\xEDos de la selva, uno nunca debe
+      confiarse."
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Ahora te tocar\xE1 cruzarlos a ti. Ten mucho cuidado, nieto."
+    postDelay: 0.1

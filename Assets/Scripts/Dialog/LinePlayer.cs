@@ -26,7 +26,7 @@ public class LinePlayer : MonoBehaviour
         if (routine == null) return;
         StopCoroutine(routine);
         routine = null;
-        voice.Stop();
+        if(voice) voice.Stop();
         EndLine();
     }
 
@@ -38,7 +38,7 @@ public class LinePlayer : MonoBehaviour
     {
         RevealProgress = 0f;
 
-        if (line.clip != null)
+        if (line.clip != null && voice != null)
         {
             voice.clip = line.clip;
             voice.Play();

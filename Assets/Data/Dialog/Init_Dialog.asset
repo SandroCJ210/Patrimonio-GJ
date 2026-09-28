@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cecf942c06f1494a991de1297c094fc, type: 3}
-  m_Name: Abuelo_Dialog_Test
+  m_Name: Init_Dialog
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 0}
-    text: 
-    postDelay: 0.4
+    text: "Luchito, ven; si\xE9ntate conmigo."
+    postDelay: 0.1
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 0}
-    text: 
-    postDelay: 0.5
+    text: "Cuando ten\xEDa tu edad viv\xED historias que todav\xEDa recuerdo muy
+      bien."
+    postDelay: 0.1
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 0}
-    text: 
-    postDelay: 1
+    text: "D\xE9jame contarte sobre ellas, para que puedas conocer un poquito m\xE1s
+      de nuestro Per\xFA."
+    postDelay: 0.1
