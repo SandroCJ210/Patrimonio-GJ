@@ -13,25 +13,17 @@ MonoBehaviour:
   m_Name: Init_Dialog
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
-  - speaker: {fileID: 11400000, guid: 90dd89e3f97f7fb43b3e7a38d05cb061, type: 2}
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 0}
-    text: "\xA1Abuelo, abuelo! \nCuentame una de las historias de cuando vivias en
-      Piura."
+    text: "Luchito, ven; si\xE9ntate conmigo."
     postDelay: 0.1
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 0}
-    text: 'O la vez que casi te atrapa el Tunche en el Amazonas. '
-    postDelay: 0.1
-  - speaker: {fileID: 11400000, guid: 90dd89e3f97f7fb43b3e7a38d05cb061, type: 2}
-    clip: {fileID: 0}
-    text: "O tambi\xE9n cuando tocaste en el Cusco, donde conociste a mi abuela..."
-    postDelay: 0.3
-  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
-    text: "Calma hijo, ven, si\xE9ntate.\nRecordar esas historias me trae nostalgia."
+    text: "Cuando ten\xEDa tu edad viv\xED historias que todav\xEDa recuerdo muy
+      bien."
     postDelay: 0.1
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 0}
-    text: "Han pasado muchos a\xF1os, pero hay recuerdos que el tiempo nunca logra
-      borrar..."
-    postDelay: 1
+    text: "D\xE9jame contarte sobre ellas, para que puedas conocer un poquito m\xE1s
+      de nuestro Per\xFA."
+    postDelay: 0.1
