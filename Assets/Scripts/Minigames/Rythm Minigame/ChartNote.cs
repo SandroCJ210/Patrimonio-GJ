@@ -9,10 +9,10 @@ public enum NoteState
 
 public enum NoteScore
 {
-    Perfect,
-    Incredible,
-    Good,
-    Miss,
+    PitriMitri,
+    Bacan,
+    Ok,
+    Falla,
     None
 }
 public sealed class ChartNote 
@@ -49,7 +49,9 @@ public sealed class ChartNote
         }
         
         Score = score;
+        FeedbackUI.Instance.UpdateFeedback(score);
         State = NoteState.Resolved;
+        
     }
     
 }

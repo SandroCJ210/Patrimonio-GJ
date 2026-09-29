@@ -7,8 +7,10 @@ public class NoteObject : MonoBehaviour
 
     [SerializeField] private Vector3 _spawnPosition;
     [SerializeField] private Vector3 _targetPosition;
+    [SerializeField] private Sprite[] _noteSprites;
 
     private double _approachTime;
+    private Sprite _currentSprite;
     
     public ChartNote ChartNote => _chartNote;
 
@@ -16,7 +18,8 @@ public class NoteObject : MonoBehaviour
         ChartNote chartNote,
         Vector3 spawnPosition,
         Vector3 targetPosition,
-        double approachTime
+        double approachTime,
+        BeatLane beatLane
     )
     {
         if (approachTime < 0)
@@ -29,6 +32,21 @@ public class NoteObject : MonoBehaviour
         _approachTime = approachTime;
         
         transform.position = _spawnPosition;
+        
+        switch (beatLane)
+        {
+            case BeatLane.Left:
+                _currentSprite = _noteSprites[0];
+                break;
+            case BeatLane.Center:
+                _currentSprite = _noteSprites[1];
+                break;
+            case BeatLane.Right:
+                _currentSprite = _noteSprites[2];
+                break;
+        }
+        
+        GetComponent<SpriteRenderer>().sprite = _currentSprite;
     }
 
     public void UpdateNote(double songTime)

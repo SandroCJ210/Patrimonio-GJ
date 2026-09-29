@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,9 +29,9 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
         new InputActionReference[3];
 
     [Header("Judgement — milliseconds")]
-    [SerializeField] private float perfectMs = 50f;
-    [SerializeField] private float incredibleMs = 100f;
-    [SerializeField] private float goodMs = 150f;
+    [SerializeField] private float perfectMs = 30f;
+    [SerializeField] private float incredibleMs = 50f;
+    [SerializeField] private float goodMs = 80f;
 
     [Tooltip("Positivo compensa pulsaciones registradas tarde.")]
     [SerializeField] private float inputOffsetMs;
@@ -207,7 +208,7 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             double error = judgementTime - note.TargetSongTime;
 
             if (error > GoodWindow)
-                Resolve(note, NoteScore.Miss, error);
+                Resolve(note, NoteScore.Falla, error);
         }
 
         SpawnDueNotes(songTime);
@@ -259,7 +260,8 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
                 note,
                 spawnPoints[lane].position,
                 targetPoints[lane].position,
-                songData.timeToPlayBeat);
+                songData.timeToPlayBeat,
+                note.Data.Lane);
 
             note.ActivateNote();
             _views.Add(note, view);
@@ -292,15 +294,15 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
         if (candidate == null)
         {
             if (logRhythmDebug)
-                Debug.Log($" {lane}: pulsación sin nota dentro de la ventana Good.", this);
+                Debug.Log($" {lane}: pulsación sin nota dentro de la ventana Ok.", this);
 
             return;
         }
 
         NoteScore score =
-            closest <= perfectMs / 1000.0 ? NoteScore.Perfect :
-            closest <= incredibleMs / 1000.0 ? NoteScore.Incredible :
-            NoteScore.Good;
+            closest <= perfectMs / 1000.0 ? NoteScore.PitriMitri :
+            closest <= incredibleMs / 1000.0 ? NoteScore.Bacan :
+            NoteScore.Ok;
 
         Resolve(candidate, score, candidateError);
     }
@@ -311,7 +313,7 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             return;
 
         note.Resolve(score);
-        _recentAccuracy.Enqueue(score != NoteScore.Miss);
+        _recentAccuracy.Enqueue(score != NoteScore.Falla);
         while (_recentAccuracy.Count > PerformanceWindow)
             _recentAccuracy.Dequeue();
 
@@ -470,7 +472,7 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             goodMs < incredibleMs)
         {
             throw new InvalidOperationException(
-                "Ventanas requeridas: 0 < Perfect <= Incredible <= Good.");
+                "Ventanas requeridas: 0 < PitriMitri <= Bacan <= Ok.");
         }
 
         if (spawnPoints == null || spawnPoints.Length != 3 ||
