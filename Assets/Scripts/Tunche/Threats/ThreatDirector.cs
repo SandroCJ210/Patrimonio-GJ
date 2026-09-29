@@ -155,6 +155,12 @@ public class ThreatDirector : MonoBehaviour, IMinigame
             if (turnBeats != null && i < turnBeats.Length) RaiseProgress(turnBeats[i]);
         }
 
+        
+        yield return new WaitUntil(() => player.IsIdle
+            && !whistleThreat.IsActive && !apparition.IsActive);
+
+        whistleThreat.ForceReset();
+        apparition.ForceReset();
         RaiseProgress(wonBeat);
         player.Freeze();
         if (lossScreen != null) lossScreen.ShowWin();

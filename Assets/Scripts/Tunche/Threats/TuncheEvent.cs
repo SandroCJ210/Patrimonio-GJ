@@ -6,6 +6,7 @@ public abstract class TuncheEvent : MonoBehaviour
     public event Action<bool> Resolved;
 
     protected bool Active { get; private set; }
+    public bool IsActive => Active;
     bool resolved;
 
     protected void BeginEvent()
