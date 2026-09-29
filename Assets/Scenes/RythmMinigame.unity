@@ -515,10 +515,10 @@ MonoBehaviour:
   - {fileID: 2897530767645033370, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   - {fileID: -3378361358198929172, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   - {fileID: 829156047456386053, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  perfectMs: 50
-  incredibleMs: 100
-  goodMs: 150
-  inputOffsetMs: 0
+  perfectMs: 30
+  incredibleMs: 50
+  goodMs: 100
+  inputOffsetMs: 10
   logRhythmDebug: 1
   completionBeat: {fileID: 0}
 --- !u!4 &93824313
