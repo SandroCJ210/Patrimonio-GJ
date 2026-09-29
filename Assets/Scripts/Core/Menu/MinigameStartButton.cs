@@ -11,6 +11,17 @@ public class MinigameStartButton : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerEnter(PointerEventData e) => target.SetActive(true);
     public void OnPointerExit(PointerEventData e) => target.SetActive(false);
 
+    void Start()
+    {
+        GameObject dialogScreen = CoreManager.I.DialogScreen;
+        
+        if (dialogScreen.transform.childCount > 0)
+        {
+            partialDialogBox= dialogScreen.transform.GetChild(0).gameObject;
+            fullDialogBox= dialogScreen.transform.GetChild(1).gameObject;
+        }
+    }
+
     public void OnClick()
     {
         fullDialogBox.SetActive(false);

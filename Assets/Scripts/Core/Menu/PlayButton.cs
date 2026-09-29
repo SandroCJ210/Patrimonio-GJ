@@ -7,6 +7,19 @@ public class PlayButton : MonoBehaviour
     [SerializeField] GameObject dialogScreen;
     [SerializeField] LinePlayer player;
     [SerializeField] DialogueSequence sequence;
+
+    void Start()
+    {
+        dialogScreen = CoreManager.I.DialogScreen;
+        player = CoreManager.I.Lines;
+
+        if (dialogScreen.transform.childCount > 0)
+        {
+            dialogScreen.transform.GetChild(0).gameObject.SetActive(false);
+            dialogScreen.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+
     int index = -1;
 
     void Play(DialogueSequence seq)
