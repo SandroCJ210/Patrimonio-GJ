@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cecf942c06f1494a991de1297c094fc, type: 3}
+  m_Name: Init_Dialog
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Luchito, ven; si\xE9ntate conmigo."
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "Cuando ten\xEDa tu edad viv\xED historias que todav\xEDa recuerdo muy
+      bien."
+    postDelay: 0.1
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 0}
+    text: "D\xE9jame contarte sobre ellas, para que puedas conocer un poquito m\xE1s
+      de nuestro Per\xFA."
+    postDelay: 0.1

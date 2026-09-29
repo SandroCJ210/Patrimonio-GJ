@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222e529c73b969540b08418b9a6faaa6, type: 3}
+  m_Name: Huayno
+  m_EditorClassIdentifier: Assembly-CSharp::SongData
+  backgroundClip: {fileID: 8300000, guid: ef45c59f40e59f647946a0811e69f7e7, type: 3}
+  mainClip: {fileID: 8300000, guid: 11fb57305c56c6441bcf4b3c88a985c0, type: 3}
+  backgroundVolume: 1
+  mainVolume: 1
+  minimumMainPerformanceVolume: 0.5
+  bpm: 95
+  songOffset: 2.508
+  beatsPerMeasure: 4
+  ticksPerBeat: 4
+  timeToPlayBeat: 3
+  notes:
+  - tick: 1
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 5
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 17
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 21
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 29
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 33
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 49
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 54
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 55
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 56
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 57
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 58
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 59
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 60
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 64
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 68
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 80
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 84
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 92
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 96
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 112
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 117
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 118
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 119
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 120
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 121
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 122
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 123
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  difficulty: 0
