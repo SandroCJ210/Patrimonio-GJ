@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayButton : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class PlayButton : MonoBehaviour
 
         if (dialogScreen.transform.childCount > 0)
         {
-            dialogScreen.transform.GetChild(0).gameObject.SetActive(false);
-            dialogScreen.transform.GetChild(1).gameObject.SetActive(true);
+            dialogScreen.transform.GetChild(0).gameObject.SetActive(true);
+
+            dialogScreen.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().color = Color.black;
         }
     }
 
