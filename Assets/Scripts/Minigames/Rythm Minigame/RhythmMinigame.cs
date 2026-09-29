@@ -64,11 +64,11 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private void Start()
     {
-        Begin();
+        BeginGame();
     }
     
 
-    public void Begin()
+    public void BeginGame()
     {
         if (!isActiveAndEnabled)
             return;
