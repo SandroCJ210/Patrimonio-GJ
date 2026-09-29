@@ -17,8 +17,6 @@ public class PlayButton : MonoBehaviour
         if (dialogScreen.transform.childCount > 0)
         {
             dialogScreen.transform.GetChild(0).gameObject.SetActive(true);
-
-            dialogScreen.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().color = Color.black;
         }
     }
 

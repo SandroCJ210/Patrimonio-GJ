@@ -24,7 +24,6 @@ public class MinigameStartButton : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnClick()
     {
         fullDialogBox.SetActive(false);
-        CoreManager.I.DialogScreen.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().color = Color.white;
         CoreManager.I.Router.Go(minigameSceneName);
     }
 }
