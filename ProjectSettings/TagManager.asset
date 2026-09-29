@@ -2,8 +2,12 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Ingredient
+  - Plate
+  - Customer
+  - PlatePositioner
   layers:
   - Default
   - TransparentFX
@@ -38,8 +42,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1316020469
+    locked: 0
+  - name: Customers
+    uniqueID: 827940381
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Plate
+    uniqueID: 2671554903
+    locked: 0
+  - name: Ingredients
+    uniqueID: 3295715165
     locked: 0
   m_RenderingLayers:
   - Default
@@ -50,27 +66,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
