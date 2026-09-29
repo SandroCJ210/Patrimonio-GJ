@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Ingredient
+  - Plate
+  - Customer
+  - PlatePositioner
   layers:
   - Default
   - TransparentFX
@@ -39,13 +43,19 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 3572286805
+    uniqueID: 1316020469
+    locked: 0
+  - name: Customers
+    uniqueID: 827940381
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 3304720087
+  - name: Plate
+    uniqueID: 2671554903
+    locked: 0
+  - name: Ingredients
+    uniqueID: 3295715165
     locked: 0
   m_RenderingLayers:
   - Default
