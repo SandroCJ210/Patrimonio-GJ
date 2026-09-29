@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameStartButton
   target: {fileID: 202596312}
   fullDialogBox: {fileID: 820069639}
-  minigameSceneName: Minigame
+  minigameSceneName: RhythmMinigame
 --- !u!114 &1401879735
 MonoBehaviour:
   m_ObjectHideFlags: 0
