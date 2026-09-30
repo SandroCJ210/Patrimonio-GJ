@@ -557,6 +557,11 @@ MonoBehaviour:
   clock: {fileID: 653285753}
   notePrefab: {fileID: 8177585174582341645, guid: 5b6d0f13d0ce05140a9910d956423a2c, type: 3}
   noteFather: {fileID: 339654529}
+  hitSfxClips:
+  - {fileID: 8300000, guid: 5d0ad39a3c944024f86b3f209f388b13, type: 3}
+  - {fileID: 8300000, guid: 5796299af22d135469d10d9afd5700b8, type: 3}
+  - {fileID: 8300000, guid: b6e903844291e9040a56436fc70276c7, type: 3}
+  - {fileID: 8300000, guid: edce8d31ef6b9414183329db30047820, type: 3}
   spawnPoints:
   - {fileID: 2049506769}
   - {fileID: 694244526}
