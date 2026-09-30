@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 8300000, guid: be48760c19c696b4aa2b9e1874ea7c90, type: 3}
+    clip: {fileID: 8300000, guid: 8c4b11a4ff6f6d3489afb223456d886b, type: 3}
     text: "Mi mam\xE1 ten\xEDa una carretilla de ceviche y sal\xEDa todos los d\xEDas
       a vender. Cuando llegaban muchos clientes la apoyaba."
     postDelay: 0.5
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 8300000, guid: 141e6498af7263f4b9751531f46ef682, type: 3}
+    clip: {fileID: 8300000, guid: a4b6e2456dfda0b41968713b61917d5a, type: 3}
     text: "Me ense\xF1\xF3 que puede prepararse de diferentes maneras, siguiente
       diferentes ingredientes y costumbres de cada regi\xF3n."
     postDelay: 0.6
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 8300000, guid: 141e6498af7263f4b9751531f46ef682, type: 3}
+    clip: {fileID: 8300000, guid: 9b35a831ce1ad1f458d4d65651cc2a88, type: 3}
     text: "Un d\xEDa mi mam\xE1 estuvo enferma, as\xED que tuve que ponerme manos
       a la obra..."
     postDelay: 0.6
