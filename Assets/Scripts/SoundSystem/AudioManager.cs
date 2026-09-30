@@ -57,6 +57,26 @@ public class AudioManager : PersistentSingleton<AudioManager> {
 	}
 
 	#region Sound Effects
+	/// <summary>Plays a one-shot clip through the shared SFX pool and volume bus.</summary>
+	public EmmiterController Play(AudioClip clip, float clipVolume = 1f) {
+		if(clip == null) return null;
+		if(float.IsNaN(clipVolume) || float.IsInfinity(clipVolume) ||
+			clipVolume < 0f || clipVolume > 1f) {
+			Debug.LogError("Clip volume must be between 0 and 1.");
+			return null;
+		}
+		if(SoundPool.Instance == null) {
+			Debug.LogWarning($"SoundPool is not available. Clip '{clip.name}' could not be played.");
+			return null;
+		}
+
+		var emitter = SoundPool.Instance.PoolSoundEmmiter();
+		if(emitter == null) return null;
+		emitter.SetupClip(clip, clipVolume, GetBusVolume(AudioBus.Sfx), AudioBus.Sfx);
+		emitter.PlaySound();
+		return emitter;
+	}
+
 	public EmmiterController Play(string name) {
 		if(string.IsNullOrEmpty(name)) return null;
 		if(!m_soundDict.ContainsKey(name)){

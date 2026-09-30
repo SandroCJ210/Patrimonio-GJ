@@ -1,6 +1,7 @@
 public enum MinigameOutcome{
     Skipped,
-    Reached
+    Reached,
+    Failed
 }
 
 public readonly struct MinigameResult{

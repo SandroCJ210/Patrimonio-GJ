@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 {
@@ -17,6 +18,9 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
     [Header("Presentation")]
     [SerializeField] private NoteObject notePrefab;
     [SerializeField] private Transform noteFather;
+
+    [Header("Hit SFX")]
+    [SerializeField] private AudioClip[] hitSfxClips = Array.Empty<AudioClip>();
 
     [Tooltip("Orden: Left, Center, Right.")]
     [SerializeField] private Transform[] spawnPoints = new Transform[3];
@@ -44,6 +48,14 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
     [SerializeField] private DialogueSequence openingDialogue;
     [SerializeField] private BeatId completionBeat;
 
+    [Header("Results")]
+    [Tooltip("Cantidad acumulada de notas falladas que provoca la derrota.")]
+    [SerializeField, Min(1)] private int maxMisses = 8;
+    [Tooltip("Espera después de resolver la última nota antes de mostrar la victoria.")]
+    [SerializeField, Min(0f)] private float victoryDelaySeconds = 2f;
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private GameObject failurePanel;
+
     private readonly Queue<(BeatLane lane, double time)> _inputs = new();
     private readonly Dictionary<ChartNote, NoteObject> _views = new();
     private readonly List<(ChartNote note, double error)> _results = new();
@@ -52,11 +64,14 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
     private InputAction[] _actions = Array.Empty<InputAction>();
 
     private int _nextSpawn;
+    private int _resolvedNoteCount;
+    private int _missCount;
     private int _sessionVersion;
     private bool _playing;
+    private bool _finishing;
     private bool _openingDialogueComplete;
     private Coroutine _openingDialogueRoutine;
-    private double _endTime;
+    private Coroutine _victoryRoutine;
     private EmmiterController _backgroundEmitter;
     private EmmiterController _mainEmitter;
     private readonly Queue<bool> _recentAccuracy = new();
@@ -66,6 +81,11 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private double GoodWindow => goodMs / 1000.0;
     private double InputOffset => inputOffsetMs / 1000.0;
+
+    private void Awake()
+    {
+        SetResultPanels(false, false);
+    }
 
     private void Start()
     {
@@ -129,6 +149,8 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
         StopSession();
 
+        SetResultPanels(false, false);
+
         try
         {
             ValidateConfiguration();
@@ -144,7 +166,6 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             _chart = new ChartNote[data.Count];
 
             var occupied = new HashSet<(int tick, BeatLane lane)>();
-            double lastTarget = 0.0;
 
             for (int i = 0; i < data.Count; i++)
             {
@@ -180,7 +201,6 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
                 }
 
                 _chart[i] = new ChartNote(note, target);
-                lastTarget = target;
             }
             
             double leadIn = Math.Max(0.5, songData.timeToPlayBeat);
@@ -204,10 +224,6 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             if (Math.Abs(songData.backgroundClip.length - songData.mainClip.length) > 0.05f)
                 Debug.LogWarning("Los stems tienen duraciones distintas; revisa que comiencen y terminen alineados.", this);
 
-            _endTime = Math.Max(
-                Math.Max(songData.backgroundClip.length, songData.mainClip.length),
-                lastTarget + GoodWindow + Math.Max(0.0, InputOffset));
-
             _playing = true;
             EnableInput();
         }
@@ -220,7 +236,7 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private void Update()
     {
-        if (!_playing || !clock.IsRunning)
+        if (!_playing || _finishing || !clock.IsRunning)
             return;
 
         int version = _sessionVersion;
@@ -286,7 +302,26 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
                 return;
         }
 
-        if (songTime > _endTime)
+        if (_missCount >= maxMisses)
+        {
+            Complete(MinigameOutcome.Failed);
+            return;
+        }
+
+        if (_resolvedNoteCount >= _chart.Length)
+        {
+            _finishing = true;
+            _victoryRoutine = StartCoroutine(CompleteVictoryAfterDelay());
+            return;
+        }
+    }
+
+    private IEnumerator CompleteVictoryAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(victoryDelaySeconds);
+        _victoryRoutine = null;
+
+        if (_playing && _finishing)
             Complete(MinigameOutcome.Reached);
     }
 
@@ -357,7 +392,26 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             closest <= incredibleMs / 1000.0 ? NoteScore.Bacan :
             NoteScore.Ok;
 
+        PlayRandomHitSfx();
         Resolve(candidate, score, candidateError);
+    }
+
+    private void PlayRandomHitSfx()
+    {
+        if (hitSfxClips == null || hitSfxClips.Length == 0)
+            return;
+
+        int startIndex = UnityEngine.Random.Range(0, hitSfxClips.Length);
+        for (int i = 0; i < hitSfxClips.Length; i++)
+        {
+            AudioClip clip = hitSfxClips[(startIndex + i) % hitSfxClips.Length];
+            if (clip == null)
+                continue;
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.Play(clip);
+            return;
+        }
     }
 
     private void Resolve(ChartNote note, NoteScore score, double error)
@@ -366,6 +420,9 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             return;
 
         note.Resolve(score);
+        _resolvedNoteCount++;
+        if (score == NoteScore.Falla)
+            _missCount++;
         _recentAccuracy.Enqueue(score != NoteScore.Falla);
         while (_recentAccuracy.Count > PerformanceWindow)
             _recentAccuracy.Dequeue();
@@ -393,7 +450,7 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private void OnLanePerformed(InputAction.CallbackContext context)
     {
-        if (!_playing || !clock.IsRunning)
+        if (!_playing || _finishing || !clock.IsRunning)
             return;
 
         for (int i = 0; i < _actions.Length; i++)
@@ -430,9 +487,22 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
             Complete(MinigameOutcome.Skipped);
     }
 
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     private void Complete(MinigameOutcome outcome)
     {
         StopSession();
+        SetResultPanels(
+            outcome == MinigameOutcome.Reached,
+            outcome == MinigameOutcome.Failed);
 
         if (outcome == MinigameOutcome.Reached && completionBeat != null)
             Progressed?.Invoke(new ProgressBeat(completionBeat));
@@ -442,8 +512,15 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private void StopSession()
     {
+        if (_victoryRoutine != null)
+        {
+            StopCoroutine(_victoryRoutine);
+            _victoryRoutine = null;
+        }
+
         _sessionVersion++;
         _playing = false;
+        _finishing = false;
 
         foreach (InputAction action in _actions)
         {
@@ -480,6 +557,17 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
         _mainEmitter = null;
         _chart = Array.Empty<ChartNote>();
         _nextSpawn = 0;
+        _resolvedNoteCount = 0;
+        _missCount = 0;
+    }
+
+    private void SetResultPanels(bool showVictory, bool showFailure)
+    {
+        if (victoryPanel != null)
+            victoryPanel.SetActive(showVictory);
+
+        if (failurePanel != null)
+            failurePanel.SetActive(showFailure);
     }
 
     private void OnDisable()
@@ -509,12 +597,18 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
                 "Asigna canción con ambos stems, reloj y prefab.");
         }
 
+        if (victoryPanel == null || failurePanel == null)
+            throw new InvalidOperationException("Asigna VictoryPanel y FailurePanel.");
+
+        if (maxMisses < 1 || !IsFinite(victoryDelaySeconds) || victoryDelaySeconds < 0f)
+            throw new InvalidOperationException("Configura maxMisses >= 1 y una espera de victoria válida.");
+
         if (songData.backgroundClip.loadState != AudioDataLoadState.Loaded ||
             songData.mainClip.loadState != AudioDataLoadState.Loaded)
             throw new InvalidOperationException("Carga ambos clips antes de comenzar el minijuego.");
 
         if (!IsFinite(songData.minimumMainPerformanceVolume) ||
-            songData.minimumMainPerformanceVolume < 0.5f ||
+            songData.minimumMainPerformanceVolume < 0 ||
             songData.minimumMainPerformanceVolume > 1f)
             throw new InvalidOperationException("El volumen mínimo del instrumento debe estar entre 0.5 y 1.");
 

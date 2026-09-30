@@ -38,7 +38,7 @@ public class SongData : ScriptableObject
 
     [Range(0f, 1f)] public float backgroundVolume = 1f;
     [Range(0f, 1f)] public float mainVolume = 1f;
-    [Range(0.5f, 1f)] public float minimumMainPerformanceVolume = 0.5f;
+    [Range(0, 1f)] public float minimumMainPerformanceVolume = 0.5f;
 
     public int bpm = 90;
     public float songOffset;

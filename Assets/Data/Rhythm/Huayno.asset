@@ -16,7 +16,7 @@ MonoBehaviour:
   mainClip: {fileID: 8300000, guid: 11fb57305c56c6441bcf4b3c88a985c0, type: 3}
   backgroundVolume: 1
   mainVolume: 1
-  minimumMainPerformanceVolume: 0.5
+  minimumMainPerformanceVolume: 0.25
   bpm: 95
   songOffset: 2.508
   beatsPerMeasure: 4
