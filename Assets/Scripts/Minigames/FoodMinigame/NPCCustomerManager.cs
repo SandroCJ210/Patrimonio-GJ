@@ -14,7 +14,7 @@ public class NPCCustomerManager : MonoBehaviour
     public int numberOfRaids = 0;
     public Coroutine spawnCoroutine;
 
-    void Start()
+    public void StartSpawning()
     {
         spawnCoroutine = StartCoroutine(SpawnCustomers());
     }

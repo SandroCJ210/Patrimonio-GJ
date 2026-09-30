@@ -23,10 +23,14 @@ MonoBehaviour:
       con unos amigos."
     postDelay: 0.2
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 8300000, guid: aa1a97c213f14e14e9b980008be18f55, type: 3}
+    clip: {fileID: 8300000, guid: 6b224f64b55bfd74a938335c211366b0, type: 3}
     text: "En el grupo todos conoc\xEDamos Valicha, uno de los huaynos m\xE1s queridos
-      de la regi\xF3n. Naci\xF3 inspirada en Valeriana Huillca, una joven de Acop\xEDa
-      a quien llamaban Valicha."
+      de la regi\xF3n. "
+    postDelay: 0.2
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: 6085ca6c4b956dd418cdda371740cc5b, type: 3}
+    text: "Naci\xF3 inspirada en Valeriana Huillca, una joven de Acop\xEDa a quien
+      llamaban Valicha."
     postDelay: 0.2
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
     clip: {fileID: 8300000, guid: bfcf0f7a1e5e1014d8072ef50a76ed91, type: 3}

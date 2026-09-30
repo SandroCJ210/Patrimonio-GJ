@@ -7001,6 +7001,7 @@ MonoBehaviour:
   npcCustomerManager: {fileID: 427202047}
   victoryPanel: {fileID: 301710371}
   failurePanel: {fileID: 639734655}
+  initialSequence: {fileID: 11400000, guid: aac61d8567efcbf47b349b1c4e972dcf, type: 2}
 --- !u!4 &2030063117
 Transform:
   m_ObjectHideFlags: 0
