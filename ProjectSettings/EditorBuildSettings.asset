@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FoodMinigame.unity
     guid: 99a9189bfec876147998daac681a57fe
+  - enabled: 1
+    path: Assets/Scenes/RhythmMinigame.unity
+    guid: 1881e417762e82a429c0bf4f004b2d8f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

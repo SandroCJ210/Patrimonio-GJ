@@ -63,6 +63,6 @@ MonoBehaviour:
     text: "Ahora te tocar\xE1 cruzarlos a ti. Ten mucho cuidado, nieto."
     postDelay: 0.4
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 8300000, guid: 9030271dfd632674cbf709334c846476, type: 3}
+    clip: {fileID: 0}
     text: "(Mueve la c\xE1mara con A y D)"
     postDelay: 0.4
