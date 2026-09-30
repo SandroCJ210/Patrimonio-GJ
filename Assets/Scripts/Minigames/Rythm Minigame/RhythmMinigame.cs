@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,6 +41,7 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
     [SerializeField] private bool logRhythmDebug = true;
 
     [Header("Story")]
+    [SerializeField] private DialogueSequence openingDialogue;
     [SerializeField] private BeatId completionBeat;
 
     private readonly Queue<(BeatLane lane, double time)> _inputs = new();
@@ -52,6 +54,8 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
     private int _nextSpawn;
     private int _sessionVersion;
     private bool _playing;
+    private bool _openingDialogueComplete;
+    private Coroutine _openingDialogueRoutine;
     private double _endTime;
     private EmmiterController _backgroundEmitter;
     private EmmiterController _mainEmitter;
@@ -65,12 +69,61 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private void Start()
     {
+        _openingDialogueRoutine = StartCoroutine(PlayOpeningDialogueThenBeginGame());
+    }
+
+    private IEnumerator PlayOpeningDialogueThenBeginGame()
+    {
+        if (openingDialogue == null || openingDialogue.lines == null ||
+            openingDialogue.lines.Length == 0)
+        {
+            Debug.LogError("Asigna un diálogo de apertura con al menos una línea.", this);
+            _openingDialogueRoutine = null;
+            yield break;
+        }
+
+        CoreManager core = CoreManager.I;
+        if (core == null || core.Lines == null || core.DialogScreen == null)
+        {
+            Debug.LogError(
+                "No se encontró el CoreManager, LinePlayer o DialogScreen para reproducir el diálogo de apertura.",
+                this);
+            _openingDialogueRoutine = null;
+            yield break;
+        }
+
+        LinePlayer linePlayer = core.Lines;
+        core.DialogScreen.SetActive(true);
+
+        foreach (NarrationLine line in openingDialogue.lines)
+        {
+            if (line == null)
+                continue;
+
+            bool lineCompleted = false;
+            linePlayer.Play(line, () => lineCompleted = true);
+            yield return new WaitUntil(() => lineCompleted || !linePlayer.IsPlaying);
+
+            if (!lineCompleted)
+            {
+                core.DialogScreen.SetActive(false);
+                _openingDialogueRoutine = null;
+                yield break;
+            }
+        }
+
+        core.DialogScreen.SetActive(false);
+        _openingDialogueComplete = true;
+        _openingDialogueRoutine = null;
         BeginGame();
     }
     
 
     public void BeginGame()
     {
+        if (!_openingDialogueComplete)
+            return;
+
         if (!isActiveAndEnabled)
             return;
 
@@ -431,6 +484,19 @@ public sealed class RhythmMinigame : MonoBehaviour, IMinigame
 
     private void OnDisable()
     {
+        if (_openingDialogueRoutine != null)
+        {
+            StopCoroutine(_openingDialogueRoutine);
+            _openingDialogueRoutine = null;
+
+            if (CoreManager.I != null)
+            {
+                CoreManager.I.Lines?.Stop();
+                if (CoreManager.I.DialogScreen != null)
+                    CoreManager.I.DialogScreen.SetActive(false);
+            }
+        }
+
         StopSession();
     }
 

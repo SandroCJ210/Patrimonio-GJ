@@ -520,6 +520,7 @@ MonoBehaviour:
   goodMs: 100
   inputOffsetMs: 10
   logRhythmDebug: 1
+  openingDialogue: {fileID: 11400000, guid: c4e6ae2f1da04de98fef85d38c40b312, type: 2}
   completionBeat: {fileID: 0}
 --- !u!4 &93824313
 Transform:
