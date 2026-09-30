@@ -14,51 +14,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c213f8a1421211b409bd14ac5caa841f, type: 3}
     text: "Hace muchos a\xF1os, cuando viajaba por el Per\xFA, tuve la oportunidad
       de conocer la selva, nieto m\xEDo."
-    postDelay: 0.1
+    postDelay: 0.3
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: be48760c19c696b4aa2b9e1874ea7c90, type: 3}
     text: "Una noche, estando all\xED, tuve que cruzar un r\xEDo completamente solo."
-    postDelay: 0.1
+    postDelay: 0.5
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 141e6498af7263f4b9751531f46ef682, type: 3}
     text: "En medio del camino comenc\xE9 a escuchar silbidos que ven\xEDan desde
       los alrededores."
-    postDelay: 0.1
+    postDelay: 0.6
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 92316006a4a584a4ab3a5bdae4156039, type: 3}
     text: "Entonces record\xE9 lo que un hombre de la zona me hab\xEDa advertido:\n"
-    postDelay: 0.1
-  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    postDelay: 0.5
+  - speaker: {fileID: 11400000, guid: 90dd89e3f97f7fb43b3e7a38d05cb061, type: 2}
+    clip: {fileID: 8300000, guid: 9bc602afbdea87943b62906a65d577e5, type: 3}
     text: "\u201CSi escuchas su silbido y logras verlo, baja la cabeza, c\xFAbrete
       y espera hasta que ya no puedas o\xEDrlo.(Tecla S)\u201D"
-    postDelay: 0.1
+    postDelay: 0.2
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
-    text: "Pens\xE9 que eso ser\xEDa lo peor...\npero tambi\xE9n me dijo:"
-    postDelay: 0.1
-  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 45b0cbcbed7541343a4654116c8448c7, type: 3}
+    text: "Pero tambi\xE9n me dijo:"
+    postDelay: 0.3
+  - speaker: {fileID: 11400000, guid: 90dd89e3f97f7fb43b3e7a38d05cb061, type: 2}
+    clip: {fileID: 8300000, guid: 3f2245a18bf1d0b468f9a3e3196941c1, type: 3}
     text: "\u201CSi llegas a ver algo dentro de la balsa, no le mires el rostro.
       Mira sus pies. Ah\xED sabr\xE1s si realmente es humano.\u201D"
-    postDelay: 0.1
+    postDelay: 0.2
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 317b32ae13e49d84586136cd1aec8705, type: 3}
     text: "Y antes de marcharme, me dej\xF3 una \xFAltima advertencia:"
-    postDelay: 0.1
-  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    postDelay: 0.3
+  - speaker: {fileID: 11400000, guid: 90dd89e3f97f7fb43b3e7a38d05cb061, type: 2}
+    clip: {fileID: 8300000, guid: 11e21fb1ea421d4469af5b8d886ce78a, type: 3}
     text: "\u201CSi lo ves... levanta tu cruz (Tecla E). Eso puede salvarte.\u201D"
     postDelay: 0.1
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3c0b2c8d4c209304d892a20b18675dc4, type: 3}
     text: "Aquella noche aprend\xED que, en los r\xEDos de la selva, uno nunca debe
       confiarse."
-    postDelay: 0.1
+    postDelay: 0.2
   - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9030271dfd632674cbf709334c846476, type: 3}
     text: "Ahora te tocar\xE1 cruzarlos a ti. Ten mucho cuidado, nieto."
-    postDelay: 0.1
+    postDelay: 0.4
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: 9030271dfd632674cbf709334c846476, type: 3}
+    text: "(Mueve la c\xE1mara con A y D)"
+    postDelay: 0.4

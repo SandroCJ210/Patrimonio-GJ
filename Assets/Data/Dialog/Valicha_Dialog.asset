@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cecf942c06f1494a991de1297c094fc, type: 3}
+  m_Name: Valicha_Dialog
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: 465e67f5f266cf940a131da0b1cf7166, type: 3}
+    text: "Nunca olvidar\xE9 esa fiesta en Cusco, todos estaban bailando en la plaza."
+    postDelay: 0.2
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: 692d3e7a9feefc140ba6e91fc848172f, type: 3}
+    text: "Cuando era joven tocaba la quena, ten\xEDa un grupo que hab\xEDa formado
+      con unos amigos."
+    postDelay: 0.2
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: aa1a97c213f14e14e9b980008be18f55, type: 3}
+    text: "En el grupo todos conoc\xEDamos Valicha, uno de los huaynos m\xE1s queridos
+      de la regi\xF3n. Naci\xF3 inspirada en Valeriana Huillca, una joven de Acop\xEDa
+      a quien llamaban Valicha."
+    postDelay: 0.2
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: bfcf0f7a1e5e1014d8072ef50a76ed91, type: 3}
+    text: "Esa noche tocamos una canci\xF3n nueva inspirada en aquel huayno, te ense\xF1ar\xE9
+      c\xF3mo sonaba."
+    postDelay: 0.2

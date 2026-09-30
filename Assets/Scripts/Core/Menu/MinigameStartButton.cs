@@ -1,10 +1,10 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MinigameStartButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject target;
-    [SerializeField] GameObject partialDialogBox;
     [SerializeField] GameObject fullDialogBox;
     [SerializeField] string minigameSceneName = "Minigame";
 
@@ -17,15 +17,13 @@ public class MinigameStartButton : MonoBehaviour, IPointerEnterHandler, IPointer
         
         if (dialogScreen.transform.childCount > 0)
         {
-            partialDialogBox= dialogScreen.transform.GetChild(0).gameObject;
-            fullDialogBox= dialogScreen.transform.GetChild(1).gameObject;
+            fullDialogBox = dialogScreen.transform.GetChild(0).gameObject;
         }
     }
 
     public void OnClick()
     {
         fullDialogBox.SetActive(false);
-        partialDialogBox.SetActive(true);
         CoreManager.I.Router.Go(minigameSceneName);
     }
 }

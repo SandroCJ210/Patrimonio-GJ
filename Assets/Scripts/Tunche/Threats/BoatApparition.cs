@@ -14,11 +14,15 @@ public class BoatApparition : TuncheEvent
 
     [SerializeField] ApparitionSpawner spawner;
 
+    [SerializeField] AudioSource apparitionAudio;
+
     ApparitionKind kind;
     float deadline;
 
     public void Activate(ApparitionKind kind)
     {
+        if (apparitionAudio != null)
+            apparitionAudio.Play();
         this.kind = kind;
         BeginEvent();
 
@@ -36,6 +40,7 @@ public class BoatApparition : TuncheEvent
         if (player != null) player.SetDuckBlocked(true);
 
         deadline = Time.time + reactionWindow;
+
     }
 
     void OnEnable()
@@ -65,6 +70,9 @@ public class BoatApparition : TuncheEvent
     {
         if (visual != null) visual.enabled = false;
         if (player != null) player.SetDuckBlocked(false);
+
+        if (apparitionAudio != null)
+            apparitionAudio.Stop();
     }
 
     public override void ForceReset()
@@ -72,5 +80,8 @@ public class BoatApparition : TuncheEvent
         base.ForceReset();
         if (visual != null) visual.enabled = false;
         if (player != null) player.SetDuckBlocked(false);
+
+        if (apparitionAudio != null)
+            apparitionAudio.Stop();
     }
 }

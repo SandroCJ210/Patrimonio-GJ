@@ -21,7 +21,7 @@ MonoBehaviour:
   songOffset: 2.508
   beatsPerMeasure: 4
   ticksPerBeat: 4
-  timeToPlayBeat: 3
+  timeToPlayBeat: 1.5
   notes:
   - tick: 1
     Lane: 0
@@ -51,23 +51,23 @@ MonoBehaviour:
     Lane: 1
     noteType: 0
     durationTicks: 0
-  - tick: 54
+  - tick: 53
     Lane: 0
     noteType: 0
     durationTicks: 0
-  - tick: 55
+  - tick: 54
     Lane: 1
     noteType: 0
     durationTicks: 0
-  - tick: 56
+  - tick: 55
     Lane: 0
     noteType: 0
     durationTicks: 0
-  - tick: 57
+  - tick: 56
     Lane: 2
     noteType: 0
     durationTicks: 0
-  - tick: 58
+  - tick: 57
     Lane: 1
     noteType: 0
     durationTicks: 0
@@ -75,35 +75,35 @@ MonoBehaviour:
     Lane: 0
     noteType: 0
     durationTicks: 0
-  - tick: 60
+  - tick: 61
     Lane: 2
     noteType: 0
     durationTicks: 0
-  - tick: 64
+  - tick: 65
     Lane: 0
     noteType: 0
     durationTicks: 0
-  - tick: 68
+  - tick: 69
     Lane: 2
     noteType: 0
     durationTicks: 0
-  - tick: 80
+  - tick: 81
     Lane: 1
     noteType: 0
     durationTicks: 0
-  - tick: 84
+  - tick: 85
     Lane: 2
     noteType: 0
     durationTicks: 0
-  - tick: 92
+  - tick: 93
     Lane: 0
     noteType: 0
     durationTicks: 0
-  - tick: 96
+  - tick: 97
     Lane: 1
     noteType: 0
     durationTicks: 0
-  - tick: 112
+  - tick: 113
     Lane: 1
     noteType: 0
     durationTicks: 0
@@ -112,11 +112,11 @@ MonoBehaviour:
     noteType: 0
     durationTicks: 0
   - tick: 118
-    Lane: 1
+    Lane: 2
     noteType: 0
     durationTicks: 0
   - tick: 119
-    Lane: 0
+    Lane: 1
     noteType: 0
     durationTicks: 0
   - tick: 120
@@ -124,14 +124,510 @@ MonoBehaviour:
     noteType: 0
     durationTicks: 0
   - tick: 121
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 125
     Lane: 1
     noteType: 0
     durationTicks: 0
-  - tick: 122
+  - tick: 129
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 131
     Lane: 0
     noteType: 0
     durationTicks: 0
-  - tick: 123
+  - tick: 133
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 135
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 137
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 141
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 143
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 145
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 161
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 163
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 165
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 167
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 169
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 173
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 175
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 177
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 191
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 193
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 197
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 201
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 205
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 209
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 211
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 213
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 213
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 215
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 217
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 219
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 221
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 221
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 225
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 225
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 229
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 229
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 233
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 233
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 237
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 237
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 241
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 241
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 241
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 247
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 247
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 249
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 249
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 251
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 251
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 253
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 253
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 257
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 261
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 273
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 277
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 285
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 289
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 305
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 309
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 310
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 311
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 312
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 313
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 315
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 317
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 321
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 325
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 337
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 341
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 349
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 353
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 369
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 373
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 374
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 375
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 376
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 377
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 381
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 385
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 387
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 389
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 391
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 393
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 397
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 399
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 401
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 417
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 419
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 421
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 423
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 425
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 429
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 431
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 433
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 447
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 449
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 453
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 457
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 461
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 465
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 467
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 469
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 469
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 471
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 473
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 475
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 477
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 477
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 481
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 481
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 485
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 485
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 489
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 489
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 493
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 493
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 497
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 497
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 497
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 503
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 503
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 505
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 505
+    Lane: 2
+    noteType: 0
+    durationTicks: 0
+  - tick: 507
+    Lane: 0
+    noteType: 0
+    durationTicks: 0
+  - tick: 507
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 509
+    Lane: 1
+    noteType: 0
+    durationTicks: 0
+  - tick: 509
     Lane: 2
     noteType: 0
     durationTicks: 0

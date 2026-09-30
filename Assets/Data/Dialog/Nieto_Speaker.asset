@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93a25260d317d54b96167a6399d7ce2, type: 3}
   m_Name: Nieto_Speaker
   m_EditorClassIdentifier: Assembly-CSharp::Speaker
-  Name: Nieto
+  Name: Hombre de la selva
   Picture: {fileID: 2800000, guid: b6deff65f4a1e0e40a56f27de139f70b, type: 3}
