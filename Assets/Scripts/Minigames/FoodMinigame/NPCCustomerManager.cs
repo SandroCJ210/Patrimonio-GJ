@@ -11,11 +11,12 @@ public class NPCCustomerManager : MonoBehaviour
     public List<bool> customerOccupiedPositions = new List<bool>(){false, false, false};
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float spawnInterval = 10f;
-    
+    public int numberOfRaids = 0;
+    public Coroutine spawnCoroutine;
 
     void Start()
     {
-        StartCoroutine(SpawnCustomers());
+        spawnCoroutine = StartCoroutine(SpawnCustomers());
     }
 
     void Update()
@@ -39,10 +40,17 @@ public class NPCCustomerManager : MonoBehaviour
         activeCustomerCount = Mathf.Max(0, activeCustomerCount - 1);
     }
 
-    IEnumerator SpawnCustomers()
+    public IEnumerator SpawnCustomers()
     {
         while (true)
         {
+
+            if (numberOfRaids >= FoodMinigameManager.Instance.minNumberOfRaids)
+            {
+                FoodMinigameManager.Instance.GameOver();
+                yield break;
+            }
+
             Debug.Log("-----------SPAWNING CUSTOMERS----------");
             List<int> availablePositions = new List<int>();
             for (int positionIndex = 0; positionIndex < customerOccupiedPositions.Count; positionIndex++)
@@ -79,6 +87,8 @@ public class NPCCustomerManager : MonoBehaviour
                 npcCustomer.GoToOrder((Vector2)customerPositions[customerPosition].position);
                 activeCustomerCount++;
             }
+
+            numberOfRaids++;
 
             yield return new WaitForSeconds(spawnInterval);
         }
