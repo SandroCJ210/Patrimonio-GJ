@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cecf942c06f1494a991de1297c094fc, type: 3}
+  m_Name: Ceviche_Dialog
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
+  lines:
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: be48760c19c696b4aa2b9e1874ea7c90, type: 3}
+    text: "Mi mam\xE1 ten\xEDa una carretilla de ceviche y sal\xEDa todos los d\xEDas
+      a vender. Cuando llegaban muchos clientes la apoyaba."
+    postDelay: 0.5
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: 141e6498af7263f4b9751531f46ef682, type: 3}
+    text: "Me ense\xF1\xF3 que puede prepararse de diferentes maneras, siguiente
+      diferentes ingredientes y costumbres de cada regi\xF3n."
+    postDelay: 0.6
+  - speaker: {fileID: 11400000, guid: 33ffa64305d0e76418fa4c98b38bce9e, type: 2}
+    clip: {fileID: 8300000, guid: 141e6498af7263f4b9751531f46ef682, type: 3}
+    text: "Un d\xEDa mi mam\xE1 estuvo enferma, as\xED que tuve que ponerme manos
+      a la obra..."
+    postDelay: 0.6

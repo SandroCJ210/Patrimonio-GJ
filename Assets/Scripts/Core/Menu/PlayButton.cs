@@ -11,6 +11,12 @@ public class PlayButton : MonoBehaviour
 
     void Start()
     {
+        if(GameState.bOpenedMap)
+        {
+            menuScreen.SetActive(false);
+            mapScreen.SetActive(true);
+            return;
+        }
         dialogScreen = CoreManager.I.DialogScreen;
         player = CoreManager.I.Lines;
 
@@ -48,6 +54,7 @@ public class PlayButton : MonoBehaviour
 
     public void Play()
     {
+        GameState.bOpenedMap = true;
         menuScreen.SetActive(false);
         dialogScreen.SetActive(true);
         Play(sequence);
